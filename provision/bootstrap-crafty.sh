@@ -25,7 +25,7 @@ cd /opt/crafty
 
 # Create docker-compose.yml for Crafty Controller
 cat > docker-compose.yml <<'EOF'
-version: '3.8'
+version: '3'
 services:
   crafty:
     image: registry.gitlab.com/crafty-controller/crafty-4:latest
@@ -38,6 +38,7 @@ services:
     ports:
       - "8443:8443"  # HTTPS WebUI
       - "8000:8000"   # HTTP WebUI
+      # Default Minecraft port - additional ports can be added as needed
       - "25565:25565" # Default Minecraft port
       - "25565:25565/udp" # Default Minecraft port UDP
     volumes:
