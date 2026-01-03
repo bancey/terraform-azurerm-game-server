@@ -7,7 +7,7 @@ resource "azurerm_virtual_machine_extension" "customscript" {
   auto_upgrade_minor_version = false
   protected_settings         = <<PROTECTED_SETTINGS
   {
-    "script": "${base64encode(templatefile("${path.module}/provision/bootstrap.sh", { domain = "${var.certificate_config.domain_name}", email = "${var.certificate_config.email}" }))}"
+    "script": "${base64encode(templatefile("${path.module}/provision/${local.bootstrap_script}", { domain = "${var.certificate_config.domain_name}", email = "${var.certificate_config.email}" }))}"
   }
   PROTECTED_SETTINGS
 

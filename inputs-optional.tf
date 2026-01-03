@@ -139,3 +139,13 @@ variable "enable_aad_login" {
   type        = bool
   default     = false
 }
+
+variable "provisioning_type" {
+  description = "The type of game server management software to provision. Options: 'pterodactyl' (Pterodactyl Wings), 'pelican' (Pelican Wings), 'crafty' (Crafty Controller)"
+  type        = string
+  default     = "pterodactyl"
+  validation {
+    condition     = contains(["pterodactyl", "pelican", "crafty"], var.provisioning_type)
+    error_message = "The provisioning_type must be one of: 'pterodactyl', 'pelican', or 'crafty'."
+  }
+}
